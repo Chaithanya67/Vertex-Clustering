@@ -1,6 +1,5 @@
 example_page = "<html><head></head><body><p><div></div></p></body></html>"
 
-window_size = 2
 
 from html.parser import HTMLParser
 
@@ -22,16 +21,18 @@ class TagExtractor(HTMLParser):
 		return self.__tags
 
 
-def extract_shingle_set(web_page):
+def extract_shingle_set(web_page, window_size):
 	extractor = TagExtractor()
 	extractor.feed(web_page)
 	tag_list = extractor.get_tags()
 	index = 0
 	shingle = []
 	while index < (len(tag_list) - window_size):
-		shingle.append(tag_list[index:(index+window_size)])
+		window_index_end = index + window_size
+		window_extracted = tag_list[index:window_index_end]
+		shingle.append(window_extracted)
 		index += 1
 
 	return shingle
 
-print(extract_shingle_set(example_page))
+print(extract_shingle_set(example_page, 2))
