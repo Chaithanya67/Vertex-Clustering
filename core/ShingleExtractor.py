@@ -60,14 +60,3 @@ def create_shingle_vector(shingle_set):
 		shingle_byte = min_hash(shingle_set, hash_function)
 		shingle_vector.append(shingle_byte)
 	return shingle_vector
-
-#example
-s = create_shingle_vector([
-			["html", "head"], 
-			["head", "head"],
-			["head", "body"],
-			["body", "body"],
-			["body", "html"]
-])
-
-print(s)
