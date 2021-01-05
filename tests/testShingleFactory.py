@@ -1,5 +1,5 @@
 import unittest
-from core.ShingleExtractor import create_shingle_vector
+from core.ShingleVectorFactory import create_shingle_vector
 
 class ShingleExtractorTest(unittest.TestCase):
 
