@@ -30,7 +30,3 @@ class ShingleExtractorTest(unittest.TestCase):
 		page = "<html><body></body></html>"
 		shingle = extract_shingle_set(page, 4)
 		self.assertEqual(len(shingle), 1)
-
-
-if __name__ == "__main__":
-	unittest.main()
