@@ -28,7 +28,7 @@ def create_shingle_vector(shingle_set):
 
 import itertools
 
-def get_masked_shingles(shingle_source, mask):
+def create_masked_shingles(shingle_source, mask):
 	shingle_mask_template = [0] * (8-mask) + [None] * mask
 	all_shingle_masks = set(itertools.permutations(shingle_mask_template))
 	
@@ -41,5 +41,3 @@ def get_masked_shingles(shingle_source, mask):
 		shingle_masks.append(shingle_mask)
 
 	return shingle_masks
-
-print(get_masked_shingles([1,2,3,4,5,6,7,8], 2))
