@@ -8,4 +8,8 @@ def shingle_cover(shingle_a, shingle_b):
 			return False
 	return True
 
-print(shingle_cover([5, None], [5, 1]))
+def load_webpage(filename):
+	webpage_file = open(filename, "r", encoding="utf-8")
+	webpage = webpage_file.read()
+	webpage_file.close()
+	return webpage
