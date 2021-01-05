@@ -6,7 +6,7 @@ class UtilsTest(unittest.TestCase):
 	def test_empty_shingle(self):
 		self.assertTrue(shingle_cover([], []))
 
-	def test_generic_shingle(self):
+	def test_generic_shingles(self):
 		self.assertTrue(
 			shingle_cover(
 				[20, 50, 88, 244], 
@@ -14,7 +14,7 @@ class UtilsTest(unittest.TestCase):
 			)
 		)
 
-	def test_different_shingle(self):
+	def test_different_shingles(self):
 		self.assertFalse(
 			shingle_cover(
 				[1, 50, 88, 244], 
@@ -22,7 +22,7 @@ class UtilsTest(unittest.TestCase):
 			)
 		)
 
-	def test_masked_shingle(self):
+	def test_masked_shingles(self):
 		self.assertTrue(
 			shingle_cover(
 				[77, None, 5, 10],
