@@ -3,20 +3,21 @@ from scrapy.spiders import CrawlSpider,Rule
 from scrapy.linkextractors import LinkExtractor
 
 class MySpider(CrawlSpider):
-    name = 'guide2research.com'
-    allowed_domains = ['guide2research.com']
-    start_urls = ['https://www.guide2research.com']
-    base_url = 'https://www.guide2research.com'
+    name = 'study.eu'
+    allowed_domains = ['www.study.eu']
+    start_urls = ['https://www.study.eu']
+    base_url = 'https://www.study.eu'
     
-    rules = [Rule(LinkExtractor(allow = ["/u/","/journal/","/conference/","/special-issue/","/research/"]), callback='parse', follow=False), 
-             Rule(LinkExtractor(allow =('')))]
+    rules = [Rule(LinkExtractor(allow = ["/university/..*/..*"]), callback='parse', follow=True), 
+             Rule(LinkExtractor(allow =('')),follow=True)]
     
 
     def parse(self, response):
         filename = response.url + '.html'
-        #filename = response.url[31:] + '.html'
-        filename = filename.replace('https://www.guide2research.com/', '')
-        filename = filename.replace('https://guide2research.com/', '')
+        filename = filename.replace('https://www.study.eu/', '')
+        filename = filename.replace('https://study.eu/', '')
+        if(filename[0] == 'u'):
+            filename = 'facoltà_' + filename
         filename = filename.replace('/','?')
         filename = './prova/' + filename
         with open(filename, 'wb') as f:
