@@ -4,15 +4,15 @@
 class ShingleVector:
     
     
-	def __init__(self, clusterName, content):
-		self.name = clusterName
+	def __init__(self, shingle, content):
+		self.shingle = shingle
 		self.content = content
 
-	def getName(self):
-		return self.name
+	def getShingle(self):
+		return self.shingle
 
-	def setName(self, clusterName):
-		self.name = clusterName
+	def setShingle(self, shingle):
+		self.shingle = shingle
         
 	def getContent(self):
 		return self.content

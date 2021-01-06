@@ -28,7 +28,7 @@ def extract_shingle_set(web_page, window_size):
 	while index < (len(tag_list) - (window_size - 1)):
 		window_index_end = index + window_size
 		window_extracted = tag_list[index:window_index_end]
-		shingle.append(Shingle(web_page.getName(),window_extracted))
+		shingle.append(Shingle(web_page,window_extracted))
 		index += 1
 
 	return shingle

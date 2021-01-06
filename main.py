@@ -7,4 +7,4 @@ webpage = Webpage('discuss',load_webpage("movieDB_cluster_pulito/discuss_1.html"
 shingle_set = extract_shingle_set(webpage, 8)
 shingle_vector = create_shingle_vector(shingle_set)
 print(shingle_vector.getContent())
-print(shingle_vector.getName())
+print(shingle_vector.getShingle().getWebpage().getName())

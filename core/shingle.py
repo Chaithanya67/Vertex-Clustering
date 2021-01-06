@@ -4,15 +4,15 @@
 class Shingle:
     
     
-	def __init__(self, clusterName, content):
-		self.name = clusterName
+	def __init__(self, webpage, content):
+		self.webpage = webpage
 		self.content = content
 
-	def getName(self):
-		return self.name
+	def getWebpage(self):
+		return self.webpage
 
-	def setName(self, clusterName):
-		self.name = clusterName
+	def setWebpage(self, webpage):
+		self.webpage = webpage
         
 	def getContent(self):
 		return self.content

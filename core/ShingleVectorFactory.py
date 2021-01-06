@@ -25,4 +25,4 @@ def create_shingle_vector(shingle_set):
 	for hash_function in k_hash:
 		shingle_byte = min_hash(shingle_set, hash_function)
 		shingle_vector.append(shingle_byte)
-	return ShingleVector(shingle_set[0].getName(),shingle_vector)
+	return ShingleVector(shingle_set[0],shingle_vector)
