@@ -45,9 +45,6 @@ class UtilsTest(unittest.TestCase):
                 [None, 222, 255, 0]
             )
         )
-    
-    def test_wrong_k_shingle_cover(self):
-        self.assertEqual([], k_shingle_cover(self.shingle_vector_content,4))
         
     def test_6_shingle_cover(self):
         self.assertEqual([[None,None,3],[None,2,None],[1,None,None],[None,2,3],[1,None,3],[1,2,None],[1,2,3]], k_shingle_cover(self.shingle_vector_content,6))
