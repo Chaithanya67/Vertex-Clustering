@@ -14,7 +14,7 @@ def shingle_cover(shingle_vector_a, shingle_vector_b):
 # Crea tutti i masked_shingle_vector 6/8, 7/8, 8/8 di uno shingle_vector
 def k_shingle_cover(shingle_vector_content, k):
     length = len(shingle_vector_content)
-    masked_shingle_vectors =[]
+    masked_shingle_vectors = []
     if k < 6:
         print('Minimum k is 6')
     if k == 6:
