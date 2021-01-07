@@ -21,7 +21,6 @@ def min_hash(shingle_set, hash_function):
     # restituisce l'hash minimo tra tutti quelli degli shingle della pagina
     return min(hashed_shingle_set)
 
-
 def create_shingle_vector(shingle_set):
     k_hash = get_hash_functions(8)
     shingle_vector = []

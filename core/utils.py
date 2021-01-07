@@ -49,5 +49,30 @@ def k_shingle_cover(shingle_vector_content, k):
     if k == 8:
         # 8/8
         masked_shingle_vectors.append(shingle_vector_content)
+    return masked_shingle_vectors
 
+
+def shingle_cover_only_6(shingle_vector_content):
+    length = len(shingle_vector_content)
+    masked_shingle_vectors =[]
+    for i in range(length):
+        temp = []
+        temp.extend(shingle_vector_content)
+        temp[i] = None
+        for j in range(i+1,length):
+            masked_shingle_vector = []
+            masked_shingle_vector.extend(temp)
+            masked_shingle_vector[j] = None
+            masked_shingle_vectors.append(masked_shingle_vector)
+    return masked_shingle_vectors
+
+
+def shingle_cover_only_7(shingle_vector_content):
+    length = len(shingle_vector_content)
+    masked_shingle_vectors =[]
+    for i in range(length):
+        masked_shingle_vector = []
+        masked_shingle_vector.extend(shingle_vector_content)
+        masked_shingle_vector[i] = None
+        masked_shingle_vectors.append(masked_shingle_vector)
     return masked_shingle_vectors
