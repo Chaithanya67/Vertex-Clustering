@@ -1,4 +1,5 @@
 #per ora inserisco qui ciò che ancora non mi è chiaro dove mettere
+from core.webpage import Webpage
 
 def shingle_cover(shingle_a, shingle_b):
 	assert len(shingle_a) == len(shingle_b), "shingle must have same length"
@@ -9,7 +10,9 @@ def shingle_cover(shingle_a, shingle_b):
 	return True
 
 def load_webpage(filename):
-	webpage_file = open(filename, "r", encoding="utf-8")
-	webpage = webpage_file.read()
-	webpage_file.close()
-	return webpage
+    webpage_file = open(filename, "r", encoding="utf-8")
+    #NB: questa regola di estrazione del nome va bene per tutti e tre i dataset
+    name = filename[(filename.rfind('/')+1):filename.rfind('_')]
+    webpage = Webpage(name, webpage_file.read())
+    webpage_file.close()
+    return webpage
