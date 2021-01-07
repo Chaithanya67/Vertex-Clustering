@@ -9,7 +9,7 @@ def get_hash_functions(k):
 	return hashes
 
 def min_hash(shingle_set, hash_function):
-	flatten_shingle = lambda shingles: [tag for shingle in shingles for window in shingle.getContent() for tag in window]
+	flatten_shingle = lambda shingles: [window for shingle in shingles for window in shingle.getContent()]
 	shingle_set = flatten_shingle(shingle_set)
 	shingle_hashed = list(
 		map(
