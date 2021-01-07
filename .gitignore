@@ -18,6 +18,9 @@ lib/
 lib64/
 parts/
 sdist/
+
+#IDE Folders
+.idea/
 var/
 wheels/
 pip-wheel-metadata/
