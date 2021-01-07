@@ -38,7 +38,7 @@ print(hash_table)
 ## TODO: decrement counts in H     
     
 webpage = pages[0]
-shingle_set = extract_shingle_set(webpage, 8)
+shingle_set = extract_shingle_set(webpage, 10)
 shingle_vector = create_shingle_vector(shingle_set)
-print('Contenuto shingle_vector: ' + str(shingle_vector.getContent()))
-print('Nome shingle_vector: ' + shingle_vector.getShingle().getWebpage().getName())
+print('Contenuto (hash) shingle_vector: ' + str(shingle_vector.getContent()))
+print('Nome (webpage) shingle_vector: ' + shingle_vector.getWebpage().getName())

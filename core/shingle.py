@@ -1,6 +1,8 @@
 class Shingle:
     def __init__(self, webpage, content):
+        # riferimento alla pagina web dove si trova lo shingle
         self.webpage = webpage
+        # contiene la lista di tag (shingle singolo)
         self.content = content
 
     def getWebpage(self):

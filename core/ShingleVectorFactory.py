@@ -27,4 +27,5 @@ def create_shingle_vector(shingle_set):
     for hash_function in k_hash:
         shingle_byte = min_hash(shingle_set, hash_function)
         shingle_vector.append(shingle_byte)
-    return ShingleVector(shingle_set[0], shingle_vector)
+    # ha senso restituire la webpage (uguale per tutti gli shingle), non il singolo shingle (scorrelato dal vector)
+    return ShingleVector(shingle_set[0].webpage, shingle_vector)
