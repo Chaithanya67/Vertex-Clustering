@@ -21,13 +21,13 @@ hash_table = {}
 for page in pages:
      shingle_set = extract_shingle_set(page, 8) 
      shingle_vector = create_shingle_vector(shingle_set)
-     masked_shingle_vectors = k_shingle_cover(shingle_vector.getContent(),6)
+     masked_shingle_vectors = k_shingle_cover(shingle_vector, 6)
      for masked_shingle_vector in masked_shingle_vectors:
          #Ecco la bruttura
-         if (tuple(masked_shingle_vector) in hash_table):
-              hash_table[tuple(masked_shingle_vector)] = hash_table.get(tuple(masked_shingle_vector)) + 1
+         if (masked_shingle_vector.getContent() in hash_table):
+              hash_table[masked_shingle_vector.getContent()] = hash_table.get(masked_shingle_vector.getContent()) + 1
          else:
-              hash_table[tuple(masked_shingle_vector)] = 1
+              hash_table[masked_shingle_vector.getContent()] = 1
 
 print(hash_table)
          
@@ -41,5 +41,7 @@ print(hash_table)
 webpage = pages[0]
 shingle_set = extract_shingle_set(webpage, 10)
 shingle_vector = create_shingle_vector(shingle_set)
+for elem in tuple(k_shingle_cover(shingle_vector, 7)):
+    print(elem.getContent())
 print('Contenuto (hash) shingle_vector: ' + str(shingle_vector.getContent()))
 print('Nome (webpage) shingle_vector: ' + shingle_vector.getWebpage().getName())
