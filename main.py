@@ -12,11 +12,15 @@ if len(sys.argv) < 3:
 	print("usage: main.py <datasets-folder> <dataset>")
 	exit()
 
+
 dataset_folder = sys.argv[1]
 dataset = sys.argv[2]
 loader = Loader()
 pages = loader.load_pages(dataset_folder, dataset)
 
+if len(sys.argv) > 3:
+    input_size = int(sys.argv[3])
+    pages = pages[:input_size]
 
 hash_table = {}
 
