@@ -1,8 +1,8 @@
 import unittest
 from core.utils import shingle_cover
-from core.ShingleVectorFactory import create_shingle_vector
 from core.shingleVector import ShingleVector
 from core.utils import k_shingle_cover
+from core.utils import find_8_masked_shingle_vectors
 
 
 class UtilsTest(unittest.TestCase):
@@ -45,6 +45,17 @@ class UtilsTest(unittest.TestCase):
                 [None, 222, 255, 0]
             )
         )
+
+    # TODO fix with correct ShingleVector objects
+    def test_find_8_masked_shingle_vectors(self):
+        hashtable = {}
+        hashtable[(None,1,2)] = 1
+        hashtable[(1,2,3)] = 1
+        hashtable[(2,None,None)] = 1
+        self.assertTrue(1 == len(find_8_masked_shingle_vectors(hashtable)))
+        self.assertTrue((1,2,3) == find_8_masked_shingle_vectors(hashtable)[0])
+        hashtable[(2,2,2)] = 1
+        self.assertTrue(2 == len(find_8_masked_shingle_vectors(hashtable)))
 
     def test_6_shingle_cover(self):
         self.assertEqual([ShingleVector(None, (None, None, 3)),
