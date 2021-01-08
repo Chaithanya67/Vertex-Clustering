@@ -8,7 +8,7 @@ class Algoritmo:
         
         hash_table = {}
         for page in pages:
-            shingle_set = extract_shingle_set(page, 8) 
+            shingle_set = extract_shingle_set(page, 10) 
             shingle_vector = create_shingle_vector(shingle_set)
             masked_shingle_vectors = k_shingle_cover(shingle_vector, 6)
             for masked_shingle_vector in masked_shingle_vectors:
