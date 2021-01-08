@@ -33,10 +33,8 @@ print(hash_table)
          
         
         
-## TODO: find 8/8 masked_shingle_vector o salvate all'inizio
 ## TODO: maximum count covering 
 ## TODO: decrement counts in H
-## TODO: create maskedShingleVector as a ShingleVector object (k_shingle_cover)
     
 webpage = pages[0]
 shingle_set = extract_shingle_set(webpage, 10)

@@ -46,31 +46,31 @@ class UtilsTest(unittest.TestCase):
             )
         )
 
-    # TODO fix with correct ShingleVector objects
+
     def test_find_8_masked_shingle_vectors(self):
         hashtable = {}
-        hashtable[(None,1,2)] = 1
-        hashtable[(1,2,3)] = 1
-        hashtable[(2,None,None)] = 1
+        hashtable[ShingleVector('boh',(None,1,2))] = 1
+        hashtable[ShingleVector('boh',(1,2,3))] = 1
+        hashtable[ShingleVector('boh',(2,None,None))] = 1
         self.assertTrue(1 == len(find_8_masked_shingle_vectors(hashtable)))
-        self.assertTrue((1,2,3) == find_8_masked_shingle_vectors(hashtable)[0])
-        hashtable[(2,2,2)] = 1
+        self.assertTrue((1,2,3) == find_8_masked_shingle_vectors(hashtable)[0].getContent())
+        hashtable[ShingleVector('boh',(2,2,2))] = 1
         self.assertTrue(2 == len(find_8_masked_shingle_vectors(hashtable)))
 
     def test_6_shingle_cover(self):
-        self.assertEqual([ShingleVector(None, (None, None, 3)),
-                          ShingleVector(None, (None, 2, None)),
-                          ShingleVector(None, (1, None, None)),
-                          ShingleVector(None, (None, 2, 3)),
-                          ShingleVector(None, (1, None, 3)),
-                          ShingleVector(None, (1, 2, None)),
+        self.assertEqual([ShingleVector('boh', (None, None, 3)),
+                          ShingleVector('boh', (None, 2, None)),
+                          ShingleVector('boh', (1, None, None)),
+                          ShingleVector('boh', (None, 2, 3)),
+                          ShingleVector('boh', (1, None, 3)),
+                          ShingleVector('boh', (1, 2, None)),
                           ShingleVector('boh', (1, 2, 3))],
                          k_shingle_cover(self.shingle_vector, 6))
 
     def test_7_shingle_cover(self):
-        self.assertEqual([ShingleVector(None, (None, 2, 3)),
-                          ShingleVector(None, (1, None, 3)),
-                          ShingleVector(None, (1, 2, None)),
+        self.assertEqual([ShingleVector('boh', (None, 2, 3)),
+                          ShingleVector('boh', (1, None, 3)),
+                          ShingleVector('boh', (1, 2, None)),
                           ShingleVector('boh', (1, 2, 3))],
                          k_shingle_cover(self.shingle_vector, 7))
 

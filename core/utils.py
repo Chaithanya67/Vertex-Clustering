@@ -14,13 +14,12 @@ def shingle_cover(shingle_vector_a, shingle_vector_b):
     return True
 
 
-# TODO fix with correct ShingleVector objects
 def find_8_masked_shingle_vectors(hashtable):
     list_8_masked_shingle_vectors = []
     masked_shingle_vectors = hashtable.keys()
     for masked_shingle_vector in masked_shingle_vectors:
         to_insert = True
-        for value in masked_shingle_vector:
+        for value in masked_shingle_vector.getContent():
             if (value == None):
                 to_insert = False
         if (to_insert):
@@ -46,13 +45,13 @@ def k_shingle_cover(shingle_vector, k):
                 masked_shingle_vector = []
                 masked_shingle_vector.extend(temp)
                 masked_shingle_vector[j] = None
-                masked_shingle_vectors.append(ShingleVector(None, masked_shingle_vector))
+                masked_shingle_vectors.append(ShingleVector(shingle_vector.getWebpage(), masked_shingle_vector))
         # 7/8
         for i in range(length):
             masked_shingle_vector = []
             masked_shingle_vector.extend(shingle_vector_content)
             masked_shingle_vector[i] = None
-            masked_shingle_vectors.append(ShingleVector(None, masked_shingle_vector))
+            masked_shingle_vectors.append(ShingleVector(shingle_vector.getWebpage(), masked_shingle_vector))
         # 8/8
         masked_shingle_vectors.append(ShingleVector(shingle_vector.getWebpage(), shingle_vector_content))
 
@@ -62,7 +61,7 @@ def k_shingle_cover(shingle_vector, k):
             masked_shingle_vector = []
             masked_shingle_vector.extend(shingle_vector_content)
             masked_shingle_vector[i] = None
-            masked_shingle_vectors.append(ShingleVector(None, masked_shingle_vector))
+            masked_shingle_vectors.append(ShingleVector(shingle_vector.getWebpage(), masked_shingle_vector))
         # 8/8
         masked_shingle_vectors.append(ShingleVector(shingle_vector.getWebpage(), shingle_vector_content))
     if k == 8:
@@ -71,7 +70,8 @@ def k_shingle_cover(shingle_vector, k):
     return masked_shingle_vectors
 
 
-def shingle_cover_only_6(shingle_vector_content):
+def shingle_cover_only_6(shingle_vector):
+    shingle_vector_content = shingle_vector.getContent()
     length = len(shingle_vector_content)
     masked_shingle_vectors = []
     for i in range(length):
@@ -82,16 +82,17 @@ def shingle_cover_only_6(shingle_vector_content):
             masked_shingle_vector = []
             masked_shingle_vector.extend(temp)
             masked_shingle_vector[j] = None
-            masked_shingle_vectors.append(masked_shingle_vector)
+            masked_shingle_vectors.append(ShingleVector(shingle_vector.getWebpage(), shingle_vector_content))
     return masked_shingle_vectors
 
 
-def shingle_cover_only_7(shingle_vector_content):
+def shingle_cover_only_7(shingle_vector):
+    shingle_vector_content = shingle_vector.getContent()
     length = len(shingle_vector_content)
     masked_shingle_vectors = []
     for i in range(length):
         masked_shingle_vector = []
         masked_shingle_vector.extend(shingle_vector_content)
         masked_shingle_vector[i] = None
-        masked_shingle_vectors.append(masked_shingle_vector)
+        masked_shingle_vectors.append(ShingleVector(shingle_vector.getWebpage(), shingle_vector_content))
     return masked_shingle_vectors
