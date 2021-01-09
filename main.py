@@ -54,10 +54,9 @@ print(hash_table)
     
          
         
-        
-## TODO: testing maximum_count_covering 
+ 
 ## TODO: testing passo1
-## TODO: sistemare passo2 e fare testing
+## TODO: testing passo2
     
 webpage = pages[0]
 shingle_set = extract_shingle_set(webpage, 10)

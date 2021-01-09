@@ -3,6 +3,7 @@ from core.utils import shingle_cover
 from core.shingleVector import ShingleVector
 from core.utils import k_shingle_cover
 from core.utils import find_8_masked_shingle_vectors_sorted
+from core.utils import maximum_count_covering
 
 
 class UtilsTest(unittest.TestCase):
@@ -65,6 +66,16 @@ class UtilsTest(unittest.TestCase):
         self.assertTrue((2,2,2) == find_8_masked_shingle_vectors_sorted(hashtable)[0])
         self.assertTrue((1,1,1) == find_8_masked_shingle_vectors_sorted(hashtable)[2])
         
+    def test_maximum_count_covering(self):
+        hashtable = {}
+        hashtable[(1,1,2)] = 2
+        hashtable[(1,1,3)] = 1
+        hashtable[(1,1,1)] = 3
+        self.assertEqual((1,1,1), maximum_count_covering(hashtable, (1,1,None)))
+        self.assertEqual((1,1,3), maximum_count_covering(hashtable, (1,None,3)))
+        hashtable[(2,1,3)] = 2  
+        hashtable[(3,1,3)] = 1                
+        self.assertEqual((2,1,3), maximum_count_covering(hashtable, (None,1,3)))        
         
     def test_6_shingle_cover(self):
         self.assertEqual([ShingleVector('boh', (None, None, 3)),
