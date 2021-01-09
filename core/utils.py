@@ -37,7 +37,7 @@ def maximum_count_covering(hashtable, masked_shingle_vector):
             break
     
     for vector in hashtable.keys():
-        if(shingle_cover(masked_shingle_vector, vector) & hashtable[max_vector] < hashtable[vector]):
+        if(shingle_cover(masked_shingle_vector, vector) and hashtable[max_vector] < hashtable[vector]):
             max_vector = vector
     return max_vector
 

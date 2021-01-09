@@ -49,21 +49,21 @@ class UtilsTest(unittest.TestCase):
 
     def test_find_8_masked_shingle_vectors(self):
         hashtable = {}
-        hashtable[ShingleVector('boh',(None,1,2))] = 1
-        hashtable[ShingleVector('boh',(1,2,3))] = 1
-        hashtable[ShingleVector('boh',(2,None,None))] = 1
+        hashtable[(None,1,2)] = 1
+        hashtable[(1,2,3)] = 1
+        hashtable[(2,None,None)] = 1
         self.assertTrue(1 == len(find_8_masked_shingle_vectors_sorted(hashtable)))
-        self.assertTrue((1,2,3) == find_8_masked_shingle_vectors_sorted(hashtable)[0].getContent())
-        hashtable[ShingleVector('boh',(2,2,2))] = 1
+        self.assertTrue((1,2,3) == find_8_masked_shingle_vectors_sorted(hashtable)[0])
+        hashtable[(2,2,2)] = 1
         self.assertTrue(2 == len(find_8_masked_shingle_vectors_sorted(hashtable)))
         
     def test_find_8_masked_shingle_vectors_sorted(self):
         hashtable = {}
-        hashtable[ShingleVector('boh',(1,1,1))] = 3
-        hashtable[ShingleVector('boh',(2,2,2))] = 1
-        hashtable[ShingleVector('boh',(3,3,3))] = 2
-        self.assertTrue((2,2,2) == find_8_masked_shingle_vectors_sorted(hashtable)[0].getContent())
-        self.assertTrue((1,1,1) == find_8_masked_shingle_vectors_sorted(hashtable)[2].getContent())
+        hashtable[(1,1,1)] = 3
+        hashtable[(2,2,2)] = 1
+        hashtable[(3,3,3)] = 2
+        self.assertTrue((2,2,2) == find_8_masked_shingle_vectors_sorted(hashtable)[0])
+        self.assertTrue((1,1,1) == find_8_masked_shingle_vectors_sorted(hashtable)[2])
         
         
     def test_6_shingle_cover(self):

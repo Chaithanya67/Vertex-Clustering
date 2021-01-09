@@ -28,13 +28,14 @@ hash_table = {}
 algoritmo = Algoritmo()
 hash_table = algoritmo.passo1(pages)
 
+
 ## PASSO 2 v.0.1 ## TO-BE-CONTINUED: per ora azzera tutti i conteggi, domattina mi ci metto e guardo dove ho sbagliato XD
 
 for v in find_8_masked_shingle_vectors_sorted(hash_table):
     v_primo = maximum_count_covering(hash_table, v)
     #Decrementa del contteggio di v tutti quelli che coprono v ma non sono v' stesso
     for masked_shingle_vector in hash_table.keys():
-        if(shingle_cover(masked_shingle_vector, v) & (masked_shingle_vector != v_primo)):
+        if(shingle_cover(masked_shingle_vector, v) and (masked_shingle_vector != v_primo)):
             hash_table[masked_shingle_vector] = hash_table[masked_shingle_vector] - hash_table[v]
 
 # Buttata a caso la soglia per ora
