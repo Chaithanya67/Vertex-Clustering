@@ -25,22 +25,23 @@ hash_table = {}
 algoritmo = Algoritmo()
 hash_table = algoritmo.passo1(pages)
 
+print('\n############### FINE PASSO 1 ####################\n')
+print(hash_table)
 
 ## PASSO 2 v.0.1
 hash_table = algoritmo.passo2(hash_table, 0)
 
+## Al momento al passo2 vengono azzerati i conteggi di tutti i masked_shingle_vectors, sono troppo simili e praticamente quasi tutti coprono tutti gli altri,
+## penso sia un problema come facciamo gli hash.
 
-#############################FINE PASSO 2 ######################################
-    
-print(hash_table)
-
-    
-         
-        
- 
 ## TODO: testing passo1
 ## TODO: testing passo2
-    
+
+print('\n\n\n############### FINE PASSO 2 ####################\n')  
+print(hash_table)
+
+
+print('\n\n\n######## Altre stampe indipendenti dai due passi #############\n')    
 webpage = pages[0]
 shingle_set = extract_shingle_set(webpage, 10)
 shingle_vector = create_shingle_vector(shingle_set)
