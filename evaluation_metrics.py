@@ -15,6 +15,10 @@ parser.add_argument("--goldstandard",
                     help="path to the .csv file with the gold standard")
 
 args = vars(parser.parse_args())
+'''
+Here, clustering_result.csv and gold_standard.csv 
+should be in the format object_id,cluster_id. 
+'''
 
 # Get paths to clustering result and gold standard
 clustered_file = args["clustered"]
