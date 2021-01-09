@@ -45,5 +45,15 @@ print('\n\n\n################ FINE PASSO 3 ####################\n')
 print('Numero cluster ' + str(len(cluster)))
 print('\nClusters: \n')
 print(cluster)
+
+file = open("prediction.csv", "w")
+index_cluster = 0
+for key in cluster:
+    print("\ncluster\n")
+    for page in cluster[key]:
+        file.write(page.name + ", " + str(index_cluster) + "\n")
+    index_cluster += 1
+
+file.close()
         
     

@@ -16,7 +16,7 @@ class Loader:
     def load_webpage(self, filename):
         webpage_file = open(filename, "r", encoding="utf-8")
         #NB: questa regola di estrazione del nome va bene per tutti e tre i dataset
-        name = filename[(filename.rfind('/')+1):filename.rfind('_')]
+        name = filename[(filename.rfind('/')+1):filename.rfind('.')]
         webpage = Webpage(name, webpage_file.read())
         webpage_file.close()
         return webpage
