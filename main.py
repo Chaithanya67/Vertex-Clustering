@@ -19,13 +19,22 @@ if len(sys.argv) > 3:
     input_size = int(sys.argv[3])
     pages = pages[:input_size]
 
+print('\n########## Shingle_vectors hashati prima del algoritmo##############\n')
+for page in pages:
+    shingle_set = extract_shingle_set(page, 10) 
+    shingle_vector = create_shingle_vector(shingle_set)
+    print(shingle_vector.getContent())
+
+print('\n A me puzza una cifra che vengano così\n')
+print('\n Se lo faccio sul dataset reale study invece di prova quasi tutti gli shingle vengono (0,0,0,0,0,0,0,0,0,0)\n')
+
 hash_table = {}
 
 ## PASSO 1 v.0.1
 algoritmo = Algoritmo()
 hash_table = algoritmo.passo1(pages)
 
-print('\n############### FINE PASSO 1 ####################\n')
+print('\n\n\n############### FINE PASSO 1 ####################\n')
 print(hash_table)
 
 ## PASSO 2 v.0.1
