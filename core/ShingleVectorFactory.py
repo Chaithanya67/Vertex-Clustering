@@ -14,7 +14,7 @@ def min_hash(shingle_set, hash_function):
     hashed_shingle_set = list(
         map(
             # converte le liste di tag in una stringa unica con separatore, poi ne calcola l'hash
-            lambda shingle: hash_function(','.join(shingle.getContent())) % 256, # da verificare hashing
+            lambda shingle: hash_function(','.join(shingle.getContent())) %256, # da verificare hashing
             shingle_set
         )
     )

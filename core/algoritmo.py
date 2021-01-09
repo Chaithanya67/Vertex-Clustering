@@ -41,6 +41,18 @@ class Algoritmo:
             hash_table.pop(key)
         
         return hash_table
+    
+    def passo3(self, hash_table, pages):
+        cluster ={}
+        for v in hash_table.keys():
+            cluster[v] = []
+        for page in pages:
+            shingle_set = extract_shingle_set(page, 10) 
+            v = create_shingle_vector(shingle_set)
+            v_primo = maximum_count_covering(hash_table, v.getContent())
+            cluster[v_primo].append(page)
+        
+        return cluster
 
     
     

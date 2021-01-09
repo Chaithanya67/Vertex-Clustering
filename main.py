@@ -1,8 +1,5 @@
 import sys
-from core.ShingleExtractor import extract_shingle_set
-from core.ShingleVectorFactory import create_shingle_vector
 from core.loader import Loader
-from core.utils import k_shingle_cover
 from core.algoritmo import Algoritmo
 
 if len(sys.argv) < 3:
@@ -19,18 +16,9 @@ if len(sys.argv) > 3:
     input_size = int(sys.argv[3])
     pages = pages[:input_size]
 
-print('\n########## Shingle_vectors hashati prima del algoritmo##############\n')
-for page in pages:
-    shingle_set = extract_shingle_set(page, 10) 
-    shingle_vector = create_shingle_vector(shingle_set)
-    print(shingle_vector.getContent())
-
-print('\n A me puzza una cifra che vengano così\n')
-print('\n Se lo faccio sul dataset reale study invece di prova quasi tutti gli shingle vengono (0,0,0,0,0,0,0,0,0,0)\n')
-
-hash_table = {}
 
 ## PASSO 1 v.0.1
+hash_table = {}
 algoritmo = Algoritmo()
 hash_table = algoritmo.passo1(pages)
 
@@ -38,23 +26,24 @@ print('\n\n\n############### FINE PASSO 1 ####################\n')
 print(hash_table)
 
 ## PASSO 2 v.0.1
-hash_table = algoritmo.passo2(hash_table, 0)
+hash_table = algoritmo.passo2(hash_table, 1)
 
-## Al momento al passo2 vengono azzerati i conteggi di tutti i masked_shingle_vectors, sono troppo simili e praticamente quasi tutti coprono tutti gli altri,
-## penso sia un problema come facciamo gli hash.
 
 ## TODO: testing passo1
 ## TODO: testing passo2
+## TODO: testing passo3
+## TODO: da rivedere bene come fare gli hash che per ora sono fortemente dipendenti dal modulo che scegliamo, anche alla luce dei risultati che raggiungiamo
 
 print('\n\n\n############### FINE PASSO 2 ####################\n')  
 print(hash_table)
 
+## PASSO 3 v.0.1
+cluster ={}
+cluster = algoritmo.passo3(hash_table, pages)
 
-print('\n\n\n######## Altre stampe indipendenti dai due passi #############\n')    
-webpage = pages[0]
-shingle_set = extract_shingle_set(webpage, 10)
-shingle_vector = create_shingle_vector(shingle_set)
-for elem in tuple(k_shingle_cover(shingle_vector, 7)):
-    print(elem.getContent())
-print('Contenuto (hash) shingle_vector: ' + str(shingle_vector.getContent()))
-print('Nome (webpage) shingle_vector: ' + shingle_vector.getWebpage().getName())
+print('\n\n\n################ FINE PASSO 3 ####################\n')
+print('Numero cluster ' + str(len(cluster)))
+print('\nClusters: \n')
+print(cluster)
+        
+    
