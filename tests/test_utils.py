@@ -60,22 +60,26 @@ class UtilsTest(unittest.TestCase):
         
     def test_find_8_masked_shingle_vectors_sorted(self):
         hashtable = {}
-        hashtable[(1,1,1)] = 3
-        hashtable[(2,2,2)] = 1
-        hashtable[(3,3,3)] = 2
+        hashtable[(1,1,1)] = 3 ##Terzo
+        hashtable[(2,2,2)] = 1 ##Primo
+        hashtable[(3,3,3)] = 2 ##Secondo
         self.assertTrue((2,2,2) == find_8_masked_shingle_vectors_sorted(hashtable)[0])
         self.assertTrue((1,1,1) == find_8_masked_shingle_vectors_sorted(hashtable)[2])
         
     def test_maximum_count_covering(self):
         hashtable = {}
         hashtable[(1,1,2)] = 2
-        hashtable[(1,1,3)] = 1
-        hashtable[(1,1,1)] = 3
+        hashtable[(1,1,3)] = 1 ##Unico coperto da (1,None,3)
+        hashtable[(1,1,1)] = 3 ##Massimo coperto da (1,1,None)
         self.assertEqual((1,1,1), maximum_count_covering(hashtable, (1,1,None)))
         self.assertEqual((1,1,3), maximum_count_covering(hashtable, (1,None,3)))
-        hashtable[(2,1,3)] = 2  
+        hashtable[(2,1,3)] = 2 ##Massimo coperto da (None,1,3)
         hashtable[(3,1,3)] = 1                
-        self.assertEqual((2,1,3), maximum_count_covering(hashtable, (None,1,3)))        
+        self.assertEqual((2,1,3), maximum_count_covering(hashtable, (None,1,3))) 
+        hashtable[(3,3,3)] = 2 ##A parità di conteggio devi prendere il primo che incontri
+        hashtable[(2,3,3)] = 2
+        hashtable[(1,3,3)] = 2
+        self.assertEqual((3,3,3), maximum_count_covering(hashtable, (None,3,3)))
         
     def test_6_shingle_cover(self):
         self.assertEqual([ShingleVector('boh', (None, None, 3)),
