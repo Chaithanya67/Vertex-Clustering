@@ -1,6 +1,9 @@
 from core.ShingleExtractor import extract_shingle_set
 from core.ShingleVectorFactory import create_shingle_vector
 from core.utils import k_shingle_cover
+from core.utils import find_8_masked_shingle_vectors_sorted
+from core.utils import maximum_count_covering
+from core.utils import shingle_cover
 
 class Algoritmo:
     
@@ -19,5 +22,25 @@ class Algoritmo:
                     hash_table[masked_shingle_vector.getContent()] = 1
         
         return hash_table
+    
+    def passo2(self, hash_table,threshold):
+        
+        for v in find_8_masked_shingle_vectors_sorted(hash_table):
+            v_primo = maximum_count_covering(hash_table, v)
+            #Decrementa del contteggio di v tutti quelli che coprono v ma non sono v' stesso
+            for masked_shingle_vector in hash_table.keys():
+                if(shingle_cover(masked_shingle_vector, v) and (masked_shingle_vector != v_primo)):
+                    hash_table[masked_shingle_vector] = hash_table[masked_shingle_vector] - hash_table[v]
+
+        # Buttata a caso la soglia per ora
+        key_to_delete = []
+        for key in hash_table.keys():
+            if(hash_table[key] < threshold):
+                key_to_delete.append(key)
+        for key in key_to_delete:
+            hash_table.pop(key)
+        
+        return hash_table
+
     
     
