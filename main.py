@@ -28,12 +28,6 @@ print(hash_table)
 ## PASSO 2 v.0.1
 hash_table = algoritmo.passo2(hash_table, 26)
 
-
-## TODO: testing passo1
-## TODO: testing passo2
-## TODO: testing passo3
-## TODO: da rivedere bene come fare gli hash che per ora sono fortemente dipendenti dal modulo che scegliamo, anche alla luce dei risultati che raggiungiamo
-
 print('\n\n\n############### FINE PASSO 2 ####################\n')  
 print(hash_table)
 
@@ -42,9 +36,6 @@ cluster ={}
 cluster = algoritmo.passo3(hash_table, pages)
 
 print('\n\n\n################ FINE PASSO 3 ####################\n')
-print('Numero cluster ' + str(len(cluster)))
-print('\nClusters: \n')
-print(cluster)
 
 file = open("prediction.csv", "w")
 index_cluster = 0
