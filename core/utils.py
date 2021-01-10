@@ -32,10 +32,13 @@ def find_8_masked_shingle_vectors_sorted(hashtable):
 def maximum_count_covering(hashtable, masked_shingle_vector):
     #Bruttura per inizializzare il massimo al primo shingle_vector che trovo che copre quello masked dato
     for vector in hashtable.keys():
+        found = False
         if (shingle_cover(masked_shingle_vector, vector)):
             max_vector = vector
+            found = True
             break
-    
+    if(not found):
+        return None
     for vector in hashtable.keys():
         if(shingle_cover(masked_shingle_vector, vector) and hashtable[max_vector] < hashtable[vector]):
             max_vector = vector

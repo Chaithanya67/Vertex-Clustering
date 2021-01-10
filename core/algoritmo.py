@@ -50,7 +50,8 @@ class Algoritmo:
             shingle_set = extract_shingle_set(page, 10) 
             v = create_shingle_vector(shingle_set)
             v_primo = maximum_count_covering(hash_table, v.getContent())
-            cluster[v_primo].append(page)
+            if(v_primo != None):
+                cluster[v_primo].append(page)
         
         return cluster
 
