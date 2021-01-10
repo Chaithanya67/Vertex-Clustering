@@ -22,19 +22,6 @@ if len(sys.argv) > 4:
     input_size = int(sys.argv[4])
     pages = pages[:input_size]
 
-
-'''
-
-parametri
-- windows size
-- modulo funzione hash
-- threshold
-
-'''
-
-
-
-
 def vertex_clustering(dataset, window_size=10, hash_module=256, threshold=1, verbosity=0, input_limit=None):
 	#singleton initialization
 	logger = Logger(verbosity)
@@ -78,4 +65,4 @@ def vertex_clustering(dataset, window_size=10, hash_module=256, threshold=1, ver
 	file.close()
 	        
     
-vertex_clustering(os.path.join(dataset_folder, dataset), 10, 256, 1, verbosity=verbosity)
+vertex_clustering(os.path.join(dataset_folder, dataset), 10, 512, 0, verbosity=verbosity)

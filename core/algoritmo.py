@@ -48,6 +48,10 @@ class Algoritmo:
         cluster ={}
         for v in hash_table.keys():
             cluster[v] = []
+
+        #oggetti che non appartengono a nessun cluster
+        cluster[tuple([None] * 8)] = []
+        
         for page in pages:
             shingle_set = extract_shingle_set(page, 10) 
             v = create_shingle_vector(shingle_set)
