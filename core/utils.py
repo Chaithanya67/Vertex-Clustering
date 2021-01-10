@@ -136,3 +136,6 @@ class Logger:
     def print(self, message, verbosity = 3):
         if verbosity <= Logger.__verbosity:
             print(message)
+
+    def set_verbosity(self, verbosity):
+        Logger.__verbosity = verbosity
