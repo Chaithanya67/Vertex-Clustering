@@ -14,7 +14,7 @@ def min_hash(shingle_set, hash_function):
     hashed_shingle_set = list(
         map(
             # converte le liste di tag in una stringa unica con separatore, poi ne calcola l'hash
-            lambda shingle: hash_function(','.join(shingle.getContent())) %256, # da verificare hashing
+            lambda shingle: hash_function(','.join(shingle.getContent())) %1024, # da verificare hashing
             shingle_set
         )
     )
@@ -26,7 +26,7 @@ def create_shingle_vector(shingle_set):
     shingle_vector = []
     for hash_function in k_hash:
         shingle_byte = min_hash(shingle_set, hash_function)
-        assert shingle_byte >= 0 and shingle_byte <= 255, "shingle vector element should be a value between 0 and 255 (inclusive)"
+        assert shingle_byte >= 0 and shingle_byte <= 1023, "shingle vector element should be a value between 0 and 255 (inclusive)"
         shingle_vector.append(shingle_byte)
     # ha senso restituire la webpage (uguale per tutti gli shingle), non il singolo shingle (scorrelato dal vector)
     return ShingleVector(shingle_set[0].webpage, shingle_vector)

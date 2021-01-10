@@ -26,7 +26,7 @@ print('\n\n\n############### FINE PASSO 1 ####################\n')
 print(hash_table)
 
 ## PASSO 2 v.0.1
-hash_table = algoritmo.passo2(hash_table, 20)
+hash_table = algoritmo.passo2(hash_table, 26)
 
 
 ## TODO: testing passo1
