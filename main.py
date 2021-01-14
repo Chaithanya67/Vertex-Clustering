@@ -19,9 +19,10 @@ if len(sys.argv) > 3:
 
 if len(sys.argv) > 4:
     input_size = int(sys.argv[4])
-    pages = pages[:input_size]
+else:
+	input_size = None
 
 #singleton initialization
 Logger(verbosity)
     
-vertex.clustering(dataset_folder, dataset, 10, 512, 0)
+vertex.clustering(dataset_folder, dataset, 10, 1024, 26, input_size)

@@ -102,6 +102,7 @@ def precision_recall(prediction, ground_truth):
     # Functions to determine precision, recall, F1-score and ARI
     #------------------------------------------------------------
 
+    eps = 1e-3
     # Get precicion
     def getPrecision(mat, k, s, total):
         sum_k = 0
@@ -111,7 +112,7 @@ def precision_recall(prediction, ground_truth):
                 if mat[i][j] > max_s:
                     max_s = mat[i][j]
             sum_k += max_s
-        return sum_k/total*100
+        return sum_k/(total+eps)*100
 
     # Get recall
     def getRecall(mat, k, s, total, unclassified):
@@ -122,12 +123,12 @@ def precision_recall(prediction, ground_truth):
                 if mat[j][i] > max_k:
                     max_k = mat[j][i]
             sum_s += max_k
-        return sum_s/(total+unclassified)*100
+        return sum_s/(total+unclassified+eps)*100
 
 
     # Get F1-score
     def getF1(prec, recall):
-        return 2*prec*recall/(prec+recall)
+        return 2*prec*recall/(prec+recall+eps)
 
 
     # Determine precision, recall, F1-score and ARI for clustering result
@@ -152,12 +153,16 @@ def precision_recall(prediction, ground_truth):
     my_recall = getRecall(clusters_species, n_clusters, gold_standard_n_clusters, total_clustered, (gold_standard_count-total_clustered))
     my_f1 = getF1(my_precision, my_recall)
 
-    #print("\nEvaluation Results:")
-    #print("Precision =", my_precision)
-    #print("Recall =", my_recall)
-    #print("F1-score =", my_f1)
+    '''
+    print("\nEvaluation Results:")
+    print("Precision =", my_precision)
+    print("Recall =", my_recall)
+    print("F1-score =", my_f1)
 
-    #print()
-
+    print()
+    '''
     return my_precision, my_recall, my_f1
-
+'''
+prediction, ground_truth = parse_arguments()
+precision_recall(prediction, ground_truth)
+'''

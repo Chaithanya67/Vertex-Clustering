@@ -44,22 +44,19 @@ class Algoritmo:
         
         return hash_table
     
-    def passo3(self, hash_table, pages):
+    def passo3(self, hash_table, pages, hash_module, window_size):
         cluster ={}
         for v in hash_table.keys():
             cluster[v] = []
-
-        #oggetti che non appartengono a nessun cluster
-        cluster[tuple([None] * 8)] = []
-        
         for page in pages:
-            shingle_set = extract_shingle_set(page, 10) 
-            v = create_shingle_vector(shingle_set)
+            shingle_set = extract_shingle_set(page, window_size) 
+            v = create_shingle_vector(shingle_set, hash_module)
             v_primo = maximum_count_covering(hash_table, v.getContent())
             if(v_primo != None):
                 cluster[v_primo].append(page)
         
         return cluster
+
 
     
     

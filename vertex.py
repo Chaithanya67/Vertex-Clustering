@@ -3,9 +3,10 @@ from core.loader import Loader
 from core.utils import Logger
 
 
-def clustering(dataset_folder, dataset, window_size=10, hash_module=256, threshold=1, input_limit=None):
+def clustering(dataset_folder, dataset, window_size=10, hash_module=1024, threshold=26, input_limit=None):
 	loader = Loader()
 	pages = loader.load_pages(dataset_folder, dataset)
+	pages = pages[:input_limit]
 
 	logger = Logger.get_instance()
 	logger.print('\n\n\n############### INIZIO PASSO 1 ####################\n', 1)
@@ -30,7 +31,7 @@ def clustering(dataset_folder, dataset, window_size=10, hash_module=256, thresho
 
 	logger.print('\n\n\n############### INIZIO PASSO 3 ####################\n', 1)
 	cluster ={}
-	cluster = algoritmo.passo3(hash_table, pages)
+	cluster = algoritmo.passo3(hash_table, pages, hash_module, window_size)
 
 	logger.print('\n\n\n################ FINE PASSO 3 ####################\n', 1)
 	logger.print('Numero cluster ' + str(len(cluster)), 2)
