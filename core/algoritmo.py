@@ -4,15 +4,17 @@ from core.utils import k_shingle_cover
 from core.utils import find_8_masked_shingle_vectors_sorted
 from core.utils import maximum_count_covering
 from core.utils import shingle_cover
+from core.utils import Logger
 
 class Algoritmo:
     
-    def passo1(self, pages):
-        
+    def passo1(self, pages, window_size=10, hash_module=256):
+        logger = Logger.get_instance()
         hash_table = {}
         for page in pages:
-            shingle_set = extract_shingle_set(page, 10) 
-            shingle_vector = create_shingle_vector(shingle_set)
+            logger.print("Processing page: " + page.name, 2)
+            shingle_set = extract_shingle_set(page, window_size) 
+            shingle_vector = create_shingle_vector(shingle_set, hash_module)
             masked_shingle_vectors = k_shingle_cover(shingle_vector, 6)
             for masked_shingle_vector in masked_shingle_vectors:
                 #Ecco la bruttura
@@ -23,7 +25,7 @@ class Algoritmo:
         
         return hash_table
     
-    def passo2(self, hash_table,threshold):
+    def passo2(self, hash_table, threshold):
         
         for v in find_8_masked_shingle_vectors_sorted(hash_table):
             v_primo = maximum_count_covering(hash_table, v)
@@ -46,6 +48,10 @@ class Algoritmo:
         cluster ={}
         for v in hash_table.keys():
             cluster[v] = []
+
+        #oggetti che non appartengono a nessun cluster
+        cluster[tuple([None] * 8)] = []
+        
         for page in pages:
             shingle_set = extract_shingle_set(page, 10) 
             v = create_shingle_vector(shingle_set)

@@ -1,50 +1,27 @@
 import sys
-from core.loader import Loader
-from core.algoritmo import Algoritmo
+import os
+from core.utils import Logger
+
+
+import vertex
 
 if len(sys.argv) < 3:
-	print("usage: main.py <datasets-folder> <dataset>")
+	print("usage: main.py <datasets-folder> <dataset> <verbosity> <input-size>")
 	exit()
 
 
 dataset_folder = sys.argv[1]
 dataset = sys.argv[2]
-loader = Loader()
-pages = loader.load_pages(dataset_folder, dataset)
 
+verbosity = 0
 if len(sys.argv) > 3:
-    input_size = int(sys.argv[3])
+	verbosity = int(sys.argv[3])
+
+if len(sys.argv) > 4:
+    input_size = int(sys.argv[4])
     pages = pages[:input_size]
 
-
-## PASSO 1 v.0.1
-hash_table = {}
-algoritmo = Algoritmo()
-hash_table = algoritmo.passo1(pages)
-
-print('\n\n\n############### FINE PASSO 1 ####################\n')
-print(hash_table)
-
-## PASSO 2 v.0.1
-hash_table = algoritmo.passo2(hash_table, 26)
-
-print('\n\n\n############### FINE PASSO 2 ####################\n')  
-print(hash_table)
-
-## PASSO 3 v.0.1
-cluster ={}
-cluster = algoritmo.passo3(hash_table, pages)
-
-print('\n\n\n################ FINE PASSO 3 ####################\n')
-
-file = open("prediction.csv", "w")
-index_cluster = 0
-for key in cluster:
-    print("\ncluster\n")
-    for page in cluster[key]:
-        file.write(page.name + ", " + str(index_cluster) + "\n")
-    index_cluster += 1
-
-file.close()
-        
+#singleton initialization
+Logger(verbosity)
     
+vertex.clustering(dataset_folder, dataset, 10, 512, 0)
