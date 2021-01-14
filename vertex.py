@@ -9,15 +9,15 @@ def clustering(dataset_folder, dataset, window_size=10, hash_module=1024, thresh
 	pages = pages[:input_limit]
 
 	logger = Logger.get_instance()
-	logger.print('\n\n\n############### INIZIO PASSO 1 ####################\n', 1)
+	logger.print('############### INIZIO PASSO 1 ####################', 1)
 	hash_table = {}
 	algoritmo = Algoritmo()
 	hash_table = algoritmo.passo1(pages, window_size, hash_module)
 
-	Logger.print('\n\n\n############### FINE PASSO 1 ####################\n', 1)
+	logger.print('############### FINE PASSO 1 ####################', 1)
 	logger.print(hash_table, 3)
 
-	logger.print('\n\n\n############### INIZIO PASSO 2 ####################\n', 1)
+	logger.print('############### INIZIO PASSO 2 ####################', 1)
 	hash_table = algoritmo.passo2(hash_table, threshold)
 
 
@@ -26,14 +26,14 @@ def clustering(dataset_folder, dataset, window_size=10, hash_module=1024, thresh
 	## TODO: testing passo3
 	## TODO: da rivedere bene come fare gli hash che per ora sono fortemente dipendenti dal modulo che scegliamo, anche alla luce dei risultati che raggiungiamo
 
-	logger.print('\n\n\n############### FINE PASSO 2 ####################\n', 1)  
+	logger.print('############### FINE PASSO 2 ####################', 1)  
 	logger.print(hash_table, 3)
 
-	logger.print('\n\n\n############### INIZIO PASSO 3 ####################\n', 1)
+	logger.print('############### INIZIO PASSO 3 ####################', 1)
 	cluster ={}
 	cluster = algoritmo.passo3(hash_table, pages, hash_module, window_size)
 
-	logger.print('\n\n\n################ FINE PASSO 3 ####################\n', 1)
+	logger.print('################ FINE PASSO 3 ####################', 1)
 	logger.print('Numero cluster ' + str(len(cluster)), 2)
 	logger.print('\nClusters: \n', 2)
 	logger.print(cluster, 2)

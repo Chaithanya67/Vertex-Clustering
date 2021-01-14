@@ -23,6 +23,15 @@ Infine per avere i risultati delle metriche eseguire il comando:
 python3 evaluation_metrics.py --clustered ./prediction.csv --goldstandard ./ground_truth.csv
 ```
 
+# Avvio rapido
+
+Per testare in maniera veloce il funzionamento del metodo, si può utilizzare: 
+
+	./fast_evaluation
+
+Tale script è già impostate per effettuare tutti i passi precedenti sul dataset www.study.eu con i parametri ottimali stimati dai nostri test.
+Ovviamente per fare test più approfonditi si consiglia la procedura riportata sopra, visto che tale script non permette modifiche ai parametri.
+
 # Test
 
 per eseguire tutti i test, usare nella cartella root del progetto il comando:
