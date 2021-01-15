@@ -18,11 +18,6 @@ Ad esempio:
 python3 main.py ./datasets movieDB
 ```
 
-Infine per avere i risultati delle metriche eseguire il comando:
-```
-python3 evaluation_metrics.py --clustered ./prediction.csv --goldstandard ./ground_truth.csv
-```
-
 # Avvio rapido
 
 Per testare in maniera veloce il funzionamento del metodo, si può utilizzare: 
