@@ -1,0 +1,10 @@
+input: 1000, time: 79.54573225975037 seconds
+input: 2000, time: 119.42146062850952 seconds
+input: 3000, time: 195.28017020225525 seconds
+input: 4000, time: 272.89533591270447 seconds
+input: 5000, time: 354.2606611251831 seconds
+input: 6000, time: 434.78671050071716 seconds
+input: 7000, time: 513.5233612060547 seconds
+input: 8000, time: 634.6299250125885 seconds
+input: 9000, time: 735.9161772727966 seconds
+input: 10000, time: 784.3985271453857 seconds
