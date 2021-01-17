@@ -9,7 +9,7 @@ For example:
 python3 ground_truth_builder.py ./datasets/movieDB
 ```
 
-To execute the algorithm and create the csv file with predictions run:
+To execute the algorithm run:
 ```
 python3 main.py <path-datasets> <directory-dataset>
 ```
