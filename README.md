@@ -24,7 +24,7 @@ python3 evaluation_metrics.py --clustered ./prediction.csv --goldstandard ./grou
 ```
 
 # Quick start
-To test quickly all the functionalities simply run: 
+To test quickly all the functionalities simply run from the root directory: 
 
 	./fast_evaluation
 
@@ -33,6 +33,6 @@ Obviously if you want to test more in depth, we advice to use the procedure desc
 
 # Tests
 
-To run all unit tests, run this command from the root folder:
+To run all unit tests, run this command from the root directory:
 
 	python -m unittest
