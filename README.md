@@ -1,39 +1,38 @@
 # Vertex-Clustering
-Implementazione dell'algoritmo di clustering di [Vertex](https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.453.9494&rep=rep1&type=pdf) descritto nella sezione III.a.\
-Per creare il csv con la ground truth per valutare l'algoritmo lanciare il comando:
+Implementation of the clustering algorithm in [Vertex](https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.453.9494&rep=rep1&type=pdf) described in the section III.a.\
+To create the csv file with the ground truth to evaluate the algorithm run:
 ```
 python3 ground_truth_builder.py <path-dataset>
 ```
-Ad esempio: 
+For example: 
 ```
 python3 ground_truth_builder.py ./datasets/movieDB
 ```
 
-Per eseguire l'algoritmo e creare il csv con le predizioni usare il comando:
+To execute the algorithm and create the csv file with predictions run:
 ```
 python3 main.py <path-datasets> <directory-dataset>
 ```
-Ad esempio: 
+For example: 
 ```
 python3 main.py ./datasets movieDB
 ```
 
-Infine per conoscere precision, recall e f1 measure usare il comando:
+To compute precision, recall e F1 score of the algorithm run:
 ```
 python3 evaluation_metrics.py --clustered ./prediction.csv --goldstandard ./ground_truth.csv
 ```
 
-# Avvio rapido
-
-Per testare in maniera veloce il funzionamento del metodo, si può utilizzare: 
+# Quick start
+To test quickly all the functionalities simply run: 
 
 	./fast_evaluation
 
-Tale script è già impostate per effettuare tutti i passi precedenti sul dataset www.study.eu con i parametri ottimali stimati dai nostri test.
-Ovviamente per fare test più approfonditi si consiglia la procedura riportata sopra, visto che tale script non permette modifiche ai parametri.
+This script will run all the previous described functionalities on the dataset www.study.eu with optimal parameters (estimated with our tests) already embedded.
+Obviously if you want to test more in depth, we advice to use the procedure described above, because this script doesn't permit to change any parameter.
 
-# Test
+# Tests
 
-per eseguire tutti i test, usare nella cartella root del progetto il comando:
+To run all unit tests, run this command from the root folder:
 
 	python -m unittest
