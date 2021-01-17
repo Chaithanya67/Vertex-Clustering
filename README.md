@@ -18,11 +18,6 @@ For example:
 python3 main.py ./datasets movieDB
 ```
 
-To compute precision, recall e F1 score of the algorithm run:
-```
-python3 evaluation_metrics.py --clustered ./prediction.csv --goldstandard ./ground_truth.csv
-```
-
 # Quick start
 To test quickly all the functionalities simply run from the root directory: 
 
