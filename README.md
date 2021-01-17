@@ -26,7 +26,7 @@ python3 evaluation_metrics.py --clustered ./prediction.csv --goldstandard ./grou
 # Quick start
 To test quickly all the functionalities simply run from the root directory: 
 
-	./fast_evaluation
+	./fast_evaluation.sh
 
 This script will run all the previous described functionalities on the dataset www.study.eu with optimal parameters (estimated with our tests) already embedded.
 Obviously if you want to test more in depth, we advice to use the procedure described above, because this script doesn't permit to change any parameter.
