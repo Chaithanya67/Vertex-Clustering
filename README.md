@@ -9,13 +9,18 @@ Ad esempio:
 python3 ground_truth_builder.py ./datasets/movieDB
 ```
 
-Poi eseguire l'algoritmo e creare il csv con le predizioni usare il comando:
+Per eseguire l'algoritmo e creare il csv con le predizioni usare il comando:
 ```
 python3 main.py <path-datasets> <directory-dataset>
 ```
 Ad esempio: 
 ```
 python3 main.py ./datasets movieDB
+```
+
+Infine per conoscere precision, recall e f1 measure usare il comando:
+```
+python3 evaluation_metrics.py --clustered ./prediction.csv --goldstandard ./ground_truth.csv
 ```
 
 # Avvio rapido
